@@ -16,7 +16,7 @@ import lombok.Data;
  *
  * @author feyin
  */
-@Entity(name = "clientes")
+@Entity(name = "cliente")
 @Data
 public class Cliente {
     @Id
@@ -24,15 +24,9 @@ public class Cliente {
     private Long id;
 
     private String nombre;
-    private String documento; // Podría ser un NIT o cédula, según lo que utilices.
+    private String documento; // Podría ser un NIT o cédula
     private String email;
     private String telefono;
 
-    // Relaciones con entregas
-    @OneToMany(mappedBy = "cliente")
-    private Set<EntregaTerrestre> entregasTerrestres;
-
-    @OneToMany(mappedBy = "cliente")
-    private Set<EntregaMaritima> entregasMaritimas;
     
 }
