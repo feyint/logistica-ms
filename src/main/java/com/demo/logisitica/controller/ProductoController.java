@@ -15,6 +15,7 @@ import java.util.List;
  *
  * @author feyin
  */
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/productos")
 public class ProductoController {

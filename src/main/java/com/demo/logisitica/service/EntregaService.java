@@ -5,8 +5,6 @@
 package com.demo.logisitica.service;
 
 import com.demo.logisitica.entity.Entrega;
-import com.demo.logisitica.entity.EntregaMaritima;
-import com.demo.logisitica.entity.EntregaTerrestre;
 import com.demo.logisitica.repository.EntregaRepository;
 import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +33,14 @@ public class EntregaService {
     BigDecimal precioEnvioOriginal = entrega.getPrecioEnvio();
     Integer cantidad = entrega.getCantidad();
     
-    // Determinar si la entrega es terrestre o marítima y aplicar descuento
-//    if (entrega instanceof EntregaTerrestre) {
-//        BigDecimal precioConDescuento = calcularDescuentoTerrestre(cantidad, precioEnvioOriginal);
-//        entrega.setPrecioEnvio(precioConDescuento);
-//    } else if (entrega instanceof EntregaMaritima) {
-//        BigDecimal precioConDescuento = calcularDescuentoMaritimo(cantidad, precioEnvioOriginal);
-//        entrega.setPrecioEnvio(precioConDescuento);
-//    }
+     //Determinar si la entrega es terrestre o marítima y aplicar descuento
+    if ("1".equals(entrega.getTipo())) {
+        BigDecimal precioConDescuento = calcularDescuentoTerrestre(cantidad, precioEnvioOriginal);
+        entrega.setPrecioEnvio(precioConDescuento);
+    } else {
+        BigDecimal precioConDescuento = calcularDescuentoMaritimo(cantidad, precioEnvioOriginal);
+        entrega.setPrecioEnvio(precioConDescuento);
+    }
     
     // Guardar la entrega con el precio de envío actualizado
     return entregaRepository.save(entrega);

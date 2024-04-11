@@ -14,13 +14,13 @@ import lombok.Data;
  *
  * @author feyin
  */
-@Entity
+@Entity(name = "producto")
 @Data
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    private String tipo;// Puede ser un enum o una cadena si los tipos son dinámicos.
+    private String tipo;
 
 }
